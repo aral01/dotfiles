@@ -1,0 +1,35 @@
+vo=gpu-next
+gpu-api=vulkan
+gpu-context=waylandvk
+hwdec=nvdec
+
+profile=high-quality 
+fullscreen
+
+ao=pipewire
+audio-channels=stereo
+volume-max=200
+
+osd-bar=no
+af-add=scaletempo2
+
+
+correct-downscaling=yes   # включает полнофазный путь
+linear-downscaling=no     # разрешает использовать dscale‑алгоритм
+dscale=ewa_lanczossharp   # основной ресэмплер
+dscale-antiring=0.7       # подавляем ореолы
+
+
+glsl-shader="~~/shaders/FSRCNNX_x2_16-4-4-1.glsl"
+glsl-shader="~~/shaders/KrigBilateral.glsl"
+glsl-shader="~~/shaders/CAS.glsl"
+
+
+[skipsilence-smooth]
+script-opts-append=skipsilence-ramp_constant=1
+script-opts-append=skipsilence-ramp_factor=0.4
+script-opts-append=skipsilence-ramp_exponent=1.45
+script-opts-append=skipsilence-speed_max=3
+script-opts-append=skipsilence-speed_updateinterval=0.05
+script-opts-append=skipsilence-startdelay=0
+script-opts-append=skipsilence-threshold_duration=0.25
