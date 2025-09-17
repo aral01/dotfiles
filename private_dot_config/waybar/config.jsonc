@@ -1,0 +1,67 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 30,
+	"gtk-layer-shell": true,
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"wireplumber",
+		"network"
+	],
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "★",
+			"default": "●",
+			"visible": "●",
+			"empty": "●",
+			"special": "●"
+		},
+		"sort-by": "number",
+		"disable-scroll": true,
+		"active-only": false,
+		"all-outputs": false,
+		"show-special": false,
+		"on-click": "activate",
+		"persistent-workspaces": {
+			"*": [
+				1,
+				2,
+				3
+			]
+		}
+	},
+	"clock": {
+		"format": "{:%H:%M  %d}",
+		"tooltip": false
+	},
+	"wireplumber": {
+		"format": "{volume}%",
+		"format-muted": "mute",
+		"tooltip-format": "{node_name}",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+	},
+	"network": {
+		"format-wifi": "{icon} {signalStrength}%",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰤭",
+		"tooltip": false,
+		"format-icons": {
+			"wifi": [
+				"󰤯",
+				"󰤟",
+				"󰤢",
+				"󰤥",
+				"󰤨"
+			]
+		}
+	}
+}
