@@ -1,0 +1,59 @@
+# ===== Base =====
+# Цвета согласованы с Waybar/kitty:
+# bg #15253a, fg #e6edf7, accent #7391bd, accent-hi #9fb6d9, warn #c7a692
+# Прозрачность через #RRGGBBAA
+sort=-time
+layer=overlay
+anchor=top-right
+font=JetBrainsMonoNL Nerd Font 12.5
+
+background-color=#15253acc
+text-color=#e6edf7ff
+width=420
+height=160
+margin=8
+outer-margin=10,16
+padding=10,14
+border-size=1
+border-color=#7391bdff
+border-radius=10
+icons=1
+icon-location=left
+max-icon-size=44
+icon-border-radius=8
+markup=1
+text-alignment=left
+format=<b>%s</b>\n%b
+
+# Тайминги и история
+default-timeout=6000
+ignore-timeout=1
+history=1
+max-history=50
+group-by=app-name,summary
+max-visible=6
+
+# Индикатор прогресса поверх полупрозрачного фона
+progress-color=source #7391bdcc
+
+# Кнопки/действия
+on-button-left=invoke-default-action
+on-button-right=dismiss
+on-button-middle=exec makoctl menu -n "$id" wofi -p 'Действие:'
+
+# ===== Urgency: стили =====
+[urgency=low]
+text-color=#aeb8ccff
+border-color=#7391bd80
+background-color=#15253ab3
+
+[urgency=normal]
+text-color=#e6edf7ff
+border-color=#7391bdff
+background-color=#15253acc
+
+[urgency=critical]
+text-color=#0f1b2eff
+border-color=#c7a692ff
+background-color=#f0d8c6e6
+default-timeout=0
