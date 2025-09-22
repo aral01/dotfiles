@@ -1,91 +1,259 @@
-/* ===== Палитра, полупрозрачность ===== */
-@define-color bg rgba(21, 37, 58, 0.35);
-@define-color bg2 rgba(31, 53, 88, 0.40);
-@define-color fg #e6edf7;
-@define-color muted #aeb8cc;
-@define-color accent #7391bd;
-/* холодный */
-@define-color accent-hi #9fb6d9;
-/* более светлый холодный */
-@define-color warn #c7a692;
+/* ================= Kanagawa Wave ================= */
+/* Base palette */
+@define-color base #1f1f28;
+/* bg */
+@define-color surf #2a2a37;
+/* surface */
+@define-color over #363646;
+/* overlay */
+@define-color text #dcd7ba;
+/* fujiWhite */
+@define-color dim #727169;
+/* gray */
+@define-color mute #938aa9;
+/* springViolet1 */
+@define-color blue #7e9cd8;
+/* crystalBlue */
+@define-color blue2 #7fb4ca;
+/* springBlue */
+@define-color green #98bb6c;
+@define-color yellow #e6c384;
+@define-color red #e82424;
 
-/* ===== Общие ===== */
+/* Derived accents for optional per-module coloring */
+@define-color color1 rgba(126, 156, 216, 0.80);
+/* blue  */
+@define-color color2 rgba(127, 180, 202, 0.80);
+/* blue2 */
+@define-color color3 rgba(154, 127, 184, 0.80);
+/* magenta-ish */
+@define-color color4 rgba(106, 149, 137, 0.80);
+/* teal */
+@define-color color5 rgba(114, 113, 105, 0.80);
+/* dim  */
+@define-color color6 rgba(54, 54, 70, 0.80);
+/* over */
+@define-color color7 rgba(42, 42, 55, 0.80);
+/* surf */
+@define-color color8 rgba(230, 195, 132, 0.80);
+/* yellow */
+@define-color color9 rgba(200, 192, 147, 0.80);
+/* oldWhite-ish */
+
+/* ================= General ================= */
 * {
-	font-family: JetBrainsMonoNL Nerd Font, JetBrains Mono, Inter, DejaVu Sans, sans-serif;
-	font-size: 12.5pt;
+	margin: 0;
+	padding: 0;
+	font-family: "JetBrainsMono Nerd Font", "JetBrainsMono", monospace;
+	font-weight: 700;
+	font-size: 12px;
+	min-height: 20px;
+	background: rgba(31, 31, 40, 0.35);
+	/* transparent bar */
+	color: @text;
 }
 
-window#waybar {
-	background-color: @bg;
-	color: @fg;
-	border-bottom: 1px solid @bg2;
+/* ================= Tooltip ================= */
+tooltip {
+	border: 1px solid rgba(54, 54, 70, 0.75);
+	background-color: rgba(42, 42, 55, 0.92);
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-	padding: 0 8px;
+tooltip label {
+	color: @text;
 }
 
-#wireplumber,
-#network,
-#clock,
+/* ================= Workspaces ================= */
 #workspaces {
-	padding: 0 8px;
-}
-
-/* ===== Рабочие столы ===== */
-#workspaces {
-	margin-left: 4px;
+	padding: 2px;
+	margin: 0 4px;
+	margin-left: 0;
+	padding-left: 0;
 }
 
 #workspaces button {
-	padding: 0 6px;
-	margin: 0 3px;
-	border-radius: 8px;
-	background: transparent;
-	color: @accent;
-	/* ● */
+	margin: 1px 2px;
+	background-color: transparent;
+	color: alpha(@text, 0.25);
 	border: 1px solid transparent;
+	border-radius: 8px;
 	min-width: 18px;
-	font-weight: 700;
 }
 
 #workspaces button:hover {
-	border-color: @bg2;
+	border-color: @over;
 }
 
 #workspaces button.active {
-	color: @accent-hi;
-	border-color: @accent-hi;
+	color: @blue;
+	border-color: @blue;
+	min-width: 24px;
 }
 
 #workspaces button.urgent {
-	color: @warn;
-	border-color: @warn;
+	color: @red;
+	border-color: @red;
 }
 
-/* ===== Центр: только время крупно, холодный оттенок ===== */
+/* ================= Weather (custom) ================= */
+#custom-weather {
+	margin: 2px 4px;
+	padding: 0 6px;
+	color: @text;
+	background: transparent;
+	border: none;
+}
+
+/* ================= MPD ================= */
+#custom-mediaplayer {
+	border: none;
+	background: transparent;
+	color: @text;
+}
+
+#custom-mediaplayer:hover {
+	color: @blue2;
+}
+
+/* ================= Updates ================= */
+#custom-updates {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @text;
+	border: none;
+}
+
+#custom-updates.green {
+	color: @text;
+}
+
+#custom-updates.yellow {
+	color: @yellow;
+}
+
+#custom-updates.red {
+	color: @red;
+}
+
+/* ================= Audio ================= */
+#wireplumber,
+#pulseaudio {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @blue2;
+	border: none;
+}
+
+#wireplumber:hover,
+#pulseaudio:hover {
+	color: @blue;
+}
+
+#wireplumber.muted,
+#pulseaudio.muted {
+	color: @mute;
+}
+
+/* ================= Backlight ================= */
+#backlight {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @text;
+	border: none;
+}
+
+#backlight:hover {
+	color: @blue2;
+}
+
+/* ================= Battery ================= */
+#battery {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @text;
+	border: none;
+}
+
+#battery:hover {
+	color: @blue2;
+}
+
+#battery.charging,
+#battery.plugged {
+	color: @green;
+}
+
+@keyframes blink {
+	to {
+		color: @red;
+	}
+}
+
+#battery.critical:not(.charging) {
+	color: @text;
+	animation: blink 0.5s linear infinite alternate;
+}
+
+/* ================= Tray ================= */
+#tray {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @text;
+	border: none;
+}
+
+#tray>.passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+	-gtk-icon-effect: highlight;
+}
+
+#tray menu {
+	border-radius: 8px;
+	color: @text;
+	background-color: rgba(42, 42, 55, 0.95);
+	padding: 4px;
+	border: 1px solid rgba(54, 54, 70, 0.7);
+}
+
+/* ================= Clock ================= */
 #clock {
-	color: @accent-hi;
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @blue;
+	/* холодный акцент времени */
+	border: none;
 	font-weight: 800;
-	font-size: 16.5pt;
-	letter-spacing: 0.5px;
+	font-size: 14px;
 }
 
-/* ===== Правый блок ===== */
-#wireplumber {
-	color: @accent;
+/* ================= Notifications button ================= */
+#custom-notifications {
+	margin: 2px 4px;
+	padding: 0 6px;
+	background: transparent;
+	color: @text;
+	border: none;
 }
 
-#wireplumber.muted {
-	color: @muted;
+#custom-notifications:hover {
+	color: @blue2;
 }
 
-#network {
-	color: @fg;
-}
-
-#network.disconnected {
-	color: @muted;
+/* ================= Hide empty modules ================= */
+#custom-updates.none,
+#tray.empty,
+#custom-mediaplayer.empty {
+	border: 0;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
 }
