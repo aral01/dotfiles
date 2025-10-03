@@ -11,3 +11,6 @@ PS1='[\u@\h \W]\$ '
 
 alias c='clear'
 . "$HOME/.cargo/env"
+
+# uv
+export PATH="/home/aral01/.local/bin:$PATH"
